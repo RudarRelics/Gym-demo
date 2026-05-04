@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RavenFuel — Premium Gym Supplements</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --card: #181818;
+      --orange: #ff5c00;
+      --orange-light: #ff7a2b;
+      --white: #f5f5f5;
+      --gray: #888;
+      --border: #2a2a2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: var(--white);
+    }
+
+    .logo span { color: var(--orange); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+
+    nav ul a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--black) !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--orange-light) !important; color: var(--black) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 60px 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(255,92,0,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,92,0,0.06) 0%, transparent 60%),
+        var(--black);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,92,0,0.15);
+      border: 1px solid rgba(255,92,0,0.4);
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 9vw, 8rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p {
+      margin-top: 24px;
+      font-size: 1.1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 480px;
+      font-weight: 300;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--black);
+      padding: 14px 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 60px;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .stat-num span { color: var(--orange); }
+    .stat-label { font-size: 0.75rem; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+    /* BRANDS */
+    .brands {
+      padding: 40px 60px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+    }
+
+    .brands-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      overflow: hidden;
+    }
+
+    .brands-label {
+      font-size: 0.7rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brands-list {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      color: #444;
+      transition: color 0.2s;
+      cursor: default;
+    }
+
+    .brand-name:hover { color: var(--orange); }
+
+    /* PRODUCTS SECTION */
+    .section {
+      padding: 100px 60px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .view-all {
+      color: var(--orange);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--orange);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .view-all:hover { opacity: 0.7; }
+
+    /* PRODUCT GRID */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--orange);
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      background: linear-gradient(135deg, #1a1a1a, #222);
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .product-img svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .product-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(255,92,0,0.08), transparent 70%);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--orange);
+      color: var(--black);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-brand {
+      font-size: 0.7rem;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .product-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+
+    .product-price .old {
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-decoration: line-through;
+      font-family: 'Barlow', sans-serif;
+      margin-left: 6px;
+    }
+
+    .add-btn {
+      background: var(--orange);
+      color: var(--black);
+      border: none;
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .add-btn:hover { background: var(--orange-light); }
+
+    /* CATEGORIES */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .cat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cat-card:hover {
+      border-color: var(--orange);
+      background: #1e1e1e;
+    }
+
+    .cat-icon { font-size: 2.8rem; }
+
+    .cat-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .cat-count { font-size: 0.8rem; color: var(--gray); }
+
+    /* WHY US */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .why-card {
+      background: var(--dark);
+      padding: 40px 32px;
+      transition: background 0.2s;
+    }
+
+    .why-card:hover { background: #1a1a1a; }
+
+    .why-icon { font-size: 2rem; margin-bottom: 16px; }
+
+    .why-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .why-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.6; }
+
+    /* BANNER */
+    .promo-banner {
+      margin: 0 60px;
+      background: var(--orange);
+      border-radius: 12px;
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .promo-banner::before {
+      content: 'FUEL';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16rem;
+      color: rgba(0,0,0,0.08);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .promo-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--black);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .promo-text p {
+      color: rgba(0,0,0,0.65);
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-dark:hover { opacity: 0.8; }
+
+    /* FOOTER */
+    footer {
+      margin-top: 100px;
+      border-top: 1px solid var(--border);
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand .logo { font-size: 1.8rem; }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 12px;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      padding: 20px 60px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .footer-bottom span { color: var(--orange); }
+
+    /* Hide old chatbot - using Chatbase now */
+    .chat-fab, .chat-window { display: none !important; }
+
+    /* CHATBOT BUTTON */
+    .chat-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      background: var(--orange);
+      color: var(--black);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255,92,0,0.4);
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .chat-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(255,92,0,0.6);
+    }
+
+    /* CHATBOT WINDOW */
+    .chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 999;
+      width: 360px;
+      height: 500px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      animation: slideUp 0.3s ease;
+    }
+
+    .chat-window.open { display: flex; }
+
+    .chat-header {
+      background: var(--orange);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .chat-header-info h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .chat-header-info p {
+      font-size: 0.72rem;
+      color: rgba(0,0,0,0.6);
+    }
+
+    .chat-close {
+      margin-left: auto;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--black);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .msg {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .msg.bot {
+      background: #222;
+      color: var(--white);
+      border-bottom-left-radius: 2px;
+      align-self: flex-start;
+    }
+
+    .msg.user {
+      background: var(--orange);
+      color: var(--black);
+      border-bottom-right-radius: 2px;
+      align-self: flex-end;
+      font-weight: 600;
+    }
+
+    .chat-input-area {
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: #222;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-family: 'Barlow', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .chat-input:focus { border-color: var(--orange); }
+    .chat-input::placeholder { color: #555; }
+
+    .chat-send {
+      background: var(--orange);
+      color: var(--black);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .chat-send:hover { background: var(--orange-light); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 16px 30px; }
+      nav ul { display: none; }
+      .hero { padding: 100px 30px 60px; }
+      .section { padding: 70px 30px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .promo-banner { margin: 0 30px; }
+      footer { grid-template-columns: 1fr 1fr; padding: 40px 30px; }
+      .footer-bottom { padding: 20px 30px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 3.5rem; }
+      .hero-stats { gap: 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .promo-banner { flex-direction: column; gap: 24px; text-align: center; }
+      footer { grid-template-columns: 1fr; }
+      .chat-window { width: calc(100vw - 40px); right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">Raven<span>Fuel</span></div>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#products" class="nav-cta">Shop Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag">🔥 Premium Supplements Store</div>
+      <h1>FUEL YOUR <span>GAINS</span></h1>
+      <p>Top-quality protein powders, peanut butter, creatine & supplements from the world's best brands. Delivered to your door.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">Shop Now</a>
+        <a href="#categories" class="btn-outline">Browse Categories</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">50<span>+</span></div>
+          <div class="stat-label">Products</div>
+        </div>
+        <div>
+          <div class="stat-num">8<span>+</span></div>
+          <div class="stat-label">Top Brands</div>
+        </div>
+        <div>
+          <div class="stat-num">10K<span>+</span></div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS BAR -->
+  <div class="brands" id="brands">
+    <div class="brands-inner">
+      <span class="brands-label">Trusted Brands</span>
+      <div class="brands-list">
+        <span class="brand-name">MuscleBlaze</span>
+        <span class="brand-name">Optimum Nutrition</span>
+        <span class="brand-name">MyProtein</span>
+        <span class="brand-name">Dymatize</span>
+        <span class="brand-name">BSN</span>
+        <span class="brand-name">GNC</span>
+        <span class="brand-name">Scitron</span>
+        <span class="brand-name">AS-IT-IS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="section-header">
+      <div>
+        <div class="section-tag">🛒 Best Sellers</div>
+        <h2 class="section-title">Featured Products</h2>
+      </div>
+      <a href="#" class="view-all">View All →</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img">
+          <div class="product-badge">Best Seller</div>
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <radial-gradient id="g1" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#3a1a00"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </radial-gradient>
+            <!-- container body -->
+            <rect x="55" y="55" width="90" height="110" rx="10" fill="#2a1500" stroke="#ff5c00" stroke-width="1.5"/>
+            <!-- lid -->
+            <rect x="50" y="48" width="100" height="16" rx="5" fill="#ff5c00"/>
+            <text x="100" y="60" text-anchor="middle" fill="#0a0a0a" font-size="7" font-weight="800" font-family="Arial">MUSCLEBLAZE</text>
+            <!-- label area -->
+            <rect x="60" y="75" width="80" height="70" rx="4" fill="#3d1f00"/>
+            <!-- big M logo -->
+            <text x="100" y="118" text-anchor="middle" fill="#ff5c00" font-size="40" font-weight="900" font-family="Arial">M</text>
+            <!-- product name -->
+            <text x="100" y="132" text-anchor="middle" fill="#f5f5f5" font-size="6.5" font-weight="800" font-family="Arial">WHEY PROTEIN</text>
+            <text x="100" y="142" text-anchor="middle" fill="#ff5c00" font-size="5.5" font-family="Arial">CHOCOLATE</text>
+            <!-- bottom line -->
+            <rect x="60" y="150" width="80" height="8" rx="2" fill="#ff5c00" opacity="0.15"/>
+            <text x="100" y="157" text-anchor="middle" fill="#ff5c00" font-size="5" font-family="Arial">25g PROTEIN</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">MuscleBlaze</div>
+          <div class="product-name">Whey Protein — Chocolate</div>
+          <div class="product-desc">25g protein per serving. Ideal for muscle recovery and growth post-workout.</div>
+          <div class="product-footer">
+            <div class="product-price">₹2,199 <span class="old">₹2,999</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <div class="product-badge">New</div>
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <!-- jar body -->
+            <rect x="52" y="70" width="96" height="100" rx="8" fill="#c8860a"/>
+            <!-- jar shine -->
+            <rect x="52" y="70" width="96" height="100" rx="8" fill="url(#jarshine)" opacity="0.3"/>
+            <!-- lid -->
+            <rect x="48" y="55" width="104" height="20" rx="6" fill="#7a3f00"/>
+            <text x="100" y="69" text-anchor="middle" fill="#f5c842" font-size="7" font-weight="800" font-family="Arial">OPTIMUM NUTRITION</text>
+            <!-- label -->
+            <rect x="58" y="80" width="84" height="78" rx="4" fill="#fff8e7"/>
+            <!-- peanut illustration -->
+            <ellipse cx="100" cy="100" rx="18" ry="12" fill="#c8860a"/>
+            <ellipse cx="84" cy="100" rx="10" ry="12" fill="#b87333"/>
+            <ellipse cx="116" cy="100" rx="10" ry="12" fill="#b87333"/>
+            <line x1="100" y1="88" x2="100" y2="112" stroke="#7a3f00" stroke-width="1.5"/>
+            <!-- text on label -->
+            <text x="100" y="120" text-anchor="middle" fill="#3d1f00" font-size="8" font-weight="900" font-family="Arial">PEANUT</text>
+            <text x="100" y="130" text-anchor="middle" fill="#3d1f00" font-size="8" font-weight="900" font-family="Arial">BUTTER</text>
+            <text x="100" y="143" text-anchor="middle" fill="#c8860a" font-size="6" font-family="Arial">CRUNCHY</text>
+            <!-- bottom label -->
+            <rect x="58" y="158" width="84" height="8" rx="2" fill="#7a3f00"/>
+            <text x="100" y="165" text-anchor="middle" fill="#f5c842" font-size="5" font-family="Arial">28g PROTEIN / 100g</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Optimum Nutrition</div>
+          <div class="product-name">Peanut Butter — Crunchy</div>
+          <div class="product-desc">High protein, natural peanut butter. No added sugar. Great post-workout snack.</div>
+          <div class="product-footer">
+            <div class="product-price">₹599 <span class="old">₹799</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <!-- container -->
+            <rect x="55" y="50" width="90" height="120" rx="10" fill="#0a2a4a"/>
+            <!-- lid -->
+            <rect x="50" y="43" width="100" height="14" rx="5" fill="#1a5fa0"/>
+            <text x="100" y="54" text-anchor="middle" fill="#ffffff" font-size="6.5" font-weight="800" font-family="Arial">DYMATIZE</text>
+            <!-- ISO label -->
+            <rect x="60" y="67" width="80" height="88" rx="4" fill="#0d3d6b"/>
+            <!-- ISO 100 big text -->
+            <text x="100" y="100" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="900" font-family="Arial">ISO</text>
+            <text x="100" y="122" text-anchor="middle" fill="#ff5c00" font-size="22" font-weight="900" font-family="Arial">100</text>
+            <text x="100" y="134" text-anchor="middle" fill="#aaccff" font-size="6" font-family="Arial">WHEY ISOLATE</text>
+            <text x="100" y="144" text-anchor="middle" fill="#aaaaaa" font-size="5.5" font-family="Arial">ZERO LACTOSE · ZERO FAT</text>
+            <!-- stripe -->
+            <rect x="60" y="150" width="80" height="1.5" fill="#ff5c00" opacity="0.7"/>
+            <text x="100" y="160" text-anchor="middle" fill="#ff5c00" font-size="5.5" font-family="Arial">25g PROTEIN</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Dymatize</div>
+          <div class="product-name">ISO 100 Whey Isolate</div>
+          <div class="product-desc">Pure whey isolate. Zero lactose, zero fat. 25g protein, fast absorption.</div>
+          <div class="product-footer">
+            <div class="product-price">₹3,499 <span class="old">₹4,200</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <div class="product-badge">Hot</div>
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <!-- container - cylindrical tub shape -->
+            <rect x="58" y="58" width="84" height="108" rx="8" fill="#1a0a2e"/>
+            <!-- lid -->
+            <rect x="54" y="50" width="92" height="15" rx="5" fill="#6a0dad"/>
+            <text x="100" y="61" text-anchor="middle" fill="#ffffff" font-size="6.5" font-weight="800" font-family="Arial">MYPROTEIN</text>
+            <!-- label -->
+            <rect x="63" y="72" width="74" height="80" rx="3" fill="#200a3d"/>
+            <!-- lightning bolt -->
+            <polygon points="108,78 96,105 104,105 92,128 116,98 106,98" fill="#ff5c00"/>
+            <!-- text -->
+            <text x="100" y="140" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="900" font-family="Arial">PRE-WORKOUT</text>
+            <text x="100" y="152" text-anchor="middle" fill="#cc88ff" font-size="6" font-family="Arial">FRUIT PUNCH</text>
+            <!-- bottom -->
+            <rect x="63" y="158" width="74" height="5" rx="2" fill="#6a0dad" opacity="0.7"/>
+            <text x="100" y="163" text-anchor="middle" fill="#ffffff" font-size="4.5" font-family="Arial">200mg CAFFEINE</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">MyProtein</div>
+          <div class="product-name">Pre-Workout — Fruit Punch</div>
+          <div class="product-desc">Explosive energy and focus for intense training sessions. 200mg caffeine per serving.</div>
+          <div class="product-footer">
+            <div class="product-price">₹1,299 <span class="old">₹1,799</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <!-- big tub - mass gainer is big -->
+            <rect x="45" y="45" width="110" height="130" rx="10" fill="#1a0000"/>
+            <!-- lid -->
+            <rect x="40" y="36" width="120" height="16" rx="6" fill="#cc0000"/>
+            <text x="100" y="48" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="800" font-family="Arial">MUSCLEBLAZE</text>
+            <!-- label -->
+            <rect x="51" y="64" width="98" height="96" rx="4" fill="#2a0000"/>
+            <!-- XXL text big -->
+            <text x="100" y="110" text-anchor="middle" fill="#cc0000" font-size="30" font-weight="900" font-family="Arial">XXL</text>
+            <!-- barbell icon -->
+            <rect x="72" y="70" width="56" height="8" rx="3" fill="#444"/>
+            <rect x="68" y="66" width="10" height="16" rx="2" fill="#666"/>
+            <rect x="122" y="66" width="10" height="16" rx="2" fill="#666"/>
+            <text x="100" y="126" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="900" font-family="Arial">MASS GAINER</text>
+            <text x="100" y="138" text-anchor="middle" fill="#ff4444" font-size="5.5" font-family="Arial">3:1 CARB:PROTEIN</text>
+            <rect x="51" y="163" width="98" height="8" rx="2" fill="#cc0000"/>
+            <text x="100" y="170" text-anchor="middle" fill="#ffffff" font-size="5" font-family="Arial">BULK UP FORMULA</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">MuscleBlaze</div>
+          <div class="product-name">Mass Gainer XXL</div>
+          <div class="product-desc">3:1 carb-to-protein ratio. Ideal for hardgainers looking to bulk up fast.</div>
+          <div class="product-footer">
+            <div class="product-price">₹1,899 <span class="old">₹2,500</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <!-- pouch style - creatine often comes in pouches -->
+            <rect x="58" y="55" width="84" height="112" rx="6" fill="#f0f0f0"/>
+            <!-- top seal -->
+            <rect x="58" y="55" width="84" height="12" rx="6" fill="#cccccc"/>
+            <!-- AS-IT-IS label - minimal/plain style -->
+            <rect x="63" y="70" width="74" height="90" rx="3" fill="#ffffff"/>
+            <!-- brand name -->
+            <text x="100" y="88" text-anchor="middle" fill="#111111" font-size="7" font-weight="900" font-family="Arial">AS-IT-IS</text>
+            <rect x="68" y="90" width="64" height="1" fill="#000000"/>
+            <!-- molecule icon -->
+            <circle cx="100" cy="110" r="8" fill="none" stroke="#222" stroke-width="1.5"/>
+            <circle cx="84" cy="118" r="5" fill="none" stroke="#222" stroke-width="1.5"/>
+            <circle cx="116" cy="118" r="5" fill="none" stroke="#222" stroke-width="1.5"/>
+            <line x1="93" y1="114" x2="88" y2="115" stroke="#222" stroke-width="1.5"/>
+            <line x1="107" y1="114" x2="112" y2="115" stroke="#222" stroke-width="1.5"/>
+            <!-- product name -->
+            <text x="100" y="134" text-anchor="middle" fill="#111111" font-size="8.5" font-weight="900" font-family="Arial">CREATINE</text>
+            <text x="100" y="145" text-anchor="middle" fill="#333333" font-size="6" font-family="Arial">MONOHYDRATE</text>
+            <text x="100" y="155" text-anchor="middle" fill="#666666" font-size="5" font-family="Arial">UNFLAVORED · PURE</text>
+            <!-- bottom seal -->
+            <rect x="58" y="159" width="84" height="8" rx="3" fill="#cccccc"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">AS-IT-IS</div>
+          <div class="product-name">Creatine Monohydrate</div>
+          <div class="product-desc">Pure micronized creatine. Increases strength, power, and muscle endurance.</div>
+          <div class="product-footer">
+            <div class="product-price">₹649 <span class="old">₹899</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <!-- jar body -->
+            <rect x="55" y="68" width="90" height="98" rx="8" fill="#8B4513"/>
+            <!-- lid -->
+            <rect x="52" y="55" width="96" height="18" rx="6" fill="#5a2d0c"/>
+            <text x="100" y="68" text-anchor="middle" fill="#f5c842" font-size="7" font-weight="800" font-family="Arial">SCITRON</text>
+            <!-- label -->
+            <rect x="61" y="78" width="78" height="76" rx="4" fill="#fff3e0"/>
+            <!-- peanut butter swirl -->
+            <circle cx="100" cy="108" r="22" fill="#c8860a" opacity="0.3"/>
+            <circle cx="100" cy="108" r="15" fill="#c8860a" opacity="0.5"/>
+            <circle cx="100" cy="108" r="8" fill="#c8860a"/>
+            <!-- text on label -->
+            <text x="100" y="130" text-anchor="middle" fill="#3d1f00" font-size="7.5" font-weight="900" font-family="Arial">PEANUT</text>
+            <text x="100" y="140" text-anchor="middle" fill="#3d1f00" font-size="7.5" font-weight="900" font-family="Arial">BUTTER</text>
+            <text x="100" y="150" text-anchor="middle" fill="#8B4513" font-size="6" font-family="Arial">SMOOTH</text>
+            <!-- bottom -->
+            <rect x="61" y="153" width="78" height="8" rx="2" fill="#5a2d0c"/>
+            <text x="100" y="160" text-anchor="middle" fill="#f5c842" font-size="5" font-family="Arial">NO PALM OIL</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Scitron</div>
+          <div class="product-name">Peanut Butter — Smooth</div>
+          <div class="product-desc">Creamy smooth peanut butter with 28g protein per 100g. No palm oil.</div>
+          <div class="product-footer">
+            <div class="product-price">₹449 <span class="old">₹599</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <div class="product-badge">Sale</div>
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#1a1a1a"/>
+            <!-- pill bottle -->
+            <rect x="65" y="62" width="70" height="108" rx="10" fill="#ff6600"/>
+            <!-- lid -->
+            <rect x="60" y="48" width="80" height="20" rx="8" fill="#cc4400"/>
+            <text x="100" y="62" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="900" font-family="Arial">GNC</text>
+            <!-- label -->
+            <rect x="70" y="76" width="60" height="82" rx="4" fill="#ffffff"/>
+            <!-- pill icons -->
+            <ellipse cx="100" cy="96" rx="10" ry="6" fill="#ff6600" transform="rotate(-30 100 96)"/>
+            <ellipse cx="100" cy="96" rx="10" ry="6" fill="#ffaa44" transform="rotate(-30 100 96)" clip-path="inset(0 50% 0 0)"/>
+            <!-- text on label -->
+            <text x="100" y="112" text-anchor="middle" fill="#cc4400" font-size="7.5" font-weight="900" font-family="Arial">MULTI</text>
+            <text x="100" y="122" text-anchor="middle" fill="#cc4400" font-size="7.5" font-weight="900" font-family="Arial">VITAMIN</text>
+            <text x="100" y="132" text-anchor="middle" fill="#333" font-size="5.5" font-family="Arial">FOR MEN</text>
+            <rect x="75" y="137" width="50" height="1" fill="#ff6600"/>
+            <text x="100" y="147" text-anchor="middle" fill="#666" font-size="4.8" font-family="Arial">IMMUNITY · ENERGY</text>
+            <!-- bottom -->
+            <rect x="70" y="153" width="60" height="6" rx="2" fill="#ff6600"/>
+            <text x="100" y="159" text-anchor="middle" fill="#fff" font-size="4.5" font-family="Arial">30 SERVINGS</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">GNC</div>
+          <div class="product-name">Multivitamin for Men</div>
+          <div class="product-desc">Complete daily vitamins & minerals. Supports immunity, energy and performance.</div>
+          <div class="product-footer">
+            <div class="product-price">₹799 <span class="old">₹1,100</span></div>
+            <button class="add-btn">Add +</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories" style="padding-top:0">
+    <div class="section-header">
+      <div>
+        <div class="section-tag">📦 Shop By</div>
+        <h2 class="section-title">Categories</h2>
+      </div>
+    </div>
+    <div class="categories-grid">
+      <a href="#" class="cat-card">
+        <div class="cat-icon">🥛</div>
+        <div>
+          <div class="cat-name">Whey Protein</div>
+          <div class="cat-count">12 Products</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-icon">🥜</div>
+        <div>
+          <div class="cat-name">Peanut Butter</div>
+          <div class="cat-count">8 Products</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-icon">🏋️</div>
+        <div>
+          <div class="cat-name">Mass Gainers</div>
+          <div class="cat-count">6 Products</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-icon">⚡</div>
+        <div>
+          <div class="cat-name">Pre-Workout</div>
+          <div class="cat-count">9 Products</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-icon">🔬</div>
+        <div>
+          <div class="cat-name">Creatine</div>
+          <div class="cat-count">5 Products</div>
+        </div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-icon">💊</div>
+        <div>
+          <div class="cat-name">Vitamins & Health</div>
+          <div class="cat-count">10 Products</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section" style="padding-top:0">
+    <div class="section-header">
+      <div>
+        <div class="section-tag">✅ Why Choose Us</div>
+        <h2 class="section-title">The RavenFuel Promise</h2>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🔒</div>
+        <div class="why-title">100% Authentic</div>
+        <div class="why-desc">All products are sourced directly from authorized distributors. Zero fake supplements.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚚</div>
+        <div class="why-title">Fast Delivery</div>
+        <div class="why-desc">Free shipping on orders above ₹999. Delivered within 3-5 business days across India.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Best Prices</div>
+        <div class="why-desc">We beat any competitor price. Get the best deals on premium supplements, guaranteed.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤖</div>
+        <div class="why-title">Expert Guidance</div>
+        <div class="why-desc">Our AI chatbot helps you pick the right supplement for your fitness goals, 24/7.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO BANNER -->
+  <div class="promo-banner">
+    <div class="promo-text">
+      <h2>FIRST ORDER?<br>GET 15% OFF</h2>
+      <p>Use code <strong>RAVENFUEL15</strong> at checkout. Limited time offer!</p>
+    </div>
+    <a href="#products" class="btn-dark">Claim Offer →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-brand">
+      <div class="logo">Raven<span>Fuel</span></div>
+      <p class="footer-desc">Your trusted online store for premium gym supplements. Fuel your fitness journey with the best brands.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">Whey Protein</a></li>
+        <li><a href="#">Peanut Butter</a></li>
+        <li><a href="#">Mass Gainers</a></li>
+        <li><a href="#">Pre-Workout</a></li>
+        <li><a href="#">Creatine</a></li>
+        <li><a href="#">Vitamins</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Brands</h4>
+      <ul>
+        <li><a href="#">MuscleBlaze</a></li>
+        <li><a href="#">Optimum Nutrition</a></li>
+        <li><a href="#">MyProtein</a></li>
+        <li><a href="#">Dymatize</a></li>
+        <li><a href="#">AS-IT-IS</a></li>
+        <li><a href="#">GNC</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:kamakhya@ravenfuel.com">kamakhya@ravenfuel.com</a></li>
+        <li><a href="#">+91 99999 99999</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp Support</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Returns Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>© 2026 <span>RavenFuel</span>. All rights reserved.</p>
+    <p>Made by <span style="color: var(--orange); font-weight: 700;">Kamakhya Tyagi</span></p>
+  </div>
+
+  <!-- CHATBASE CHATBOT -->
+  <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="mRKglaqskN_1RtErQbviA";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+  </script>
+
+  <!-- OLD CHATBOT FAB -->
+  <button class="chat-fab" onclick="toggleChat()" title="Chat with us">💬</button>
+
+  <!-- CHATBOT WINDOW -->
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-avatar">🤖</div>
+      <div class="chat-header-info">
+        <h4>RavenFuel Assistant</h4>
+        <p>Ask me anything about supplements!</p>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg bot">Hey! 👋 I'm your RavenFuel supplement expert. Ask me anything — best protein for beginners, peanut butter recommendations, or anything else!</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask about supplements..." onkeydown="if(event.key==='Enter') sendMessage()"/>
+      <button class="chat-send" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleChat() {
+      const win = document.getElementById('chatWindow');
+      win.classList.toggle('open');
+    }
+
+    const responses = {
+      "protein": "For beginners, I recommend **MuscleBlaze Whey Protein** (₹2,199). It has 25g protein per serving and is great for muscle recovery! 💪",
+      "whey": "We carry Whey Concentrate, Whey Isolate (Dymatize ISO 100), and Whey Blend options. Isolate is best if you're lactose sensitive!",
+      "peanut butter": "Our best sellers are Optimum Nutrition Crunchy (₹599) and Scitron Smooth (₹449). Both are high protein with no added sugar! 🥜",
+      "creatine": "AS-IT-IS Creatine Monohydrate at ₹649 is our top pick — pure, unflavored, and highly effective for strength gains! 🔬",
+      "pre workout": "MyProtein Pre-Workout (₹1,299) gives great energy and focus. 200mg caffeine per serving. Take it 30 mins before training! ⚡",
+      "mass gainer": "MuscleBlaze Mass Gainer XXL (₹1,899) is perfect for hardgainers. High calorie, 3:1 carb-to-protein ratio!",
+      "beginner": "For beginners, start with Whey Protein + Creatine. MuscleBlaze Whey (₹2,199) + AS-IT-IS Creatine (₹649) is a great combo! 🏋️",
+      "shipping": "We offer FREE shipping on orders above ₹999. Delivery takes 3-5 business days across India! 🚚",
+      "price": "Our prices are the best in India! We offer discounts on all major brands. Use code RAVENFUEL15 for 15% off your first order! 💰",
+      "discount": "Use code **RAVENFUEL15** for 15% off your first order! We also run weekly deals — follow our Instagram for updates! 🎉",
+      "brand": "We carry MuscleBlaze, Optimum Nutrition, MyProtein, Dymatize, BSN, GNC, Scitron, and AS-IT-IS — all 100% authentic! ✅",
+      "hello": "Hi there! 👋 How can I help you today? Ask me about any supplement — protein, peanut butter, creatine, pre-workout, and more!",
+      "hi": "Hey! 💪 Welcome to RavenFuel! What supplement are you looking for?",
+    };
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const messages = document.getElementById('chatMessages');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'msg user';
+      userMsg.textContent = text;
+      messages.appendChild(userMsg);
+      input.value = '';
+
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'msg bot';
+        const lower = text.toLowerCase();
+        let reply = "I'm not sure about that, but feel free to email us at ravenfuel@gmail.com or WhatsApp us for help! 😊";
+        for (const [key, val] of Object.entries(responses)) {
+          if (lower.includes(key)) { reply = val; break; }
+        }
+        botMsg.innerHTML = reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }, 600);
+
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+</body>
+</html>
